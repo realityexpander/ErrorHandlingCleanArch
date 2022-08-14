@@ -12,7 +12,7 @@ import com.realityexpander.errorhandlingcleanarch.common.UiText
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val submitEmail: SubmitEmail = SubmitEmail()
+    private val submitEmail: SubmitEmail = SubmitEmail()  // use case
 ): ViewModel() {
 
     var email by mutableStateOf("")
@@ -27,6 +27,7 @@ class MainViewModel(
     fun submit() {
         viewModelScope.launch {
             val result = submitEmail.execute(email)
+
             message = when(result) {
                 is Resource.Success -> {
                     UiText.StringResource(R.string.successfully_submitted)

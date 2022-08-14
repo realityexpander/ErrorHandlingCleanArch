@@ -6,7 +6,7 @@ import com.realityexpander.errorhandlingcleanarch.common.Resource
 import com.realityexpander.errorhandlingcleanarch.common.UiText
 
 class SubmitEmail(
-    private val repository: MyRepository = MyRepositoryImpl()
+    private val repository: MyRepository = MyRepositoryImpl() // should be injected, but for this example app, its not needed
 ) {
     suspend fun execute(email: String): Resource<Unit> {
         if(!email.contains("@")) {
